@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.V BOX OFFICE</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        background: linear-gradient(90deg, pink, orange, rgb(74, 194, 74), rgb(33, 175, 188));
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(207, 12, 142);
+        height: 10vh;
+        position: static;
+        top: 0px;
+    }
+    
+    .nav2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 150px;
+    }
+    
+    .nav3 {
+        display: grid;
+        grid-template-columns: (1, 3fr);
+        align-items: center;
+        justify-content: space-between;
+        gap: 50pxpx;
+    }
+    
+    .icon1 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 50px;
+        justify-content: space-between;
+        margin: 10px;
+        align-items: center;
+    }
+    
+    .icon2 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 50px;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    
+    .icon3 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 40px;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    
+    .icon4 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 60px;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    
+    .icon5 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 75px;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    
+    .icon6 {
+        background-color: rgb(42, 228, 14);
+        height: 20px;
+        width: 50px;
+        justify-content: space-between;
+        margin: 10px;
+    }
+    
+    .T-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .E-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .H-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .K-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .M-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .TA-posters {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    
+    .box1 {
+        color: darkblue;
+    }
+    
+    .box2 {
+        color: darkblue;
+    }
+    
+    .box3 {
+        color: darkblue;
+    }
+    
+    .box4 {
+        color: darkblue;
+    }
+    
+    .box1:hover {
+        color: aquamarine;
+    }
+    
+    .box2:hover {
+        color: aquamarine;
+    }
+    
+    .box3:hover {
+        color: aquamarine;
+    }
+    
+    .box4:hover {
+        color: aquamarine;
+    }
+    
+    .language-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .language-menu {
+        display: none;
+        position: absolute;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 12px 10px;
+        border-radius: 5px;
+        top: 100%;
+        align-items: start;
+    }
+    
+    .language-menu.show {
+        display: block;
+    }
+    
+    .language-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #c80cc2;
+        color: black;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .movie-img {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    
+    .movie-img:hover {
+        transform: scale(1.1);
+    }
+    /* Movie Details Modal */
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.3s;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #c80cc2;
+        padding-bottom: 15px;
+    }
+    
+    .modal-header h2 {
+        color: #c80cc2;
+        margin: 0;
+    }
+    
+    .close-btn {
+        font-size: 28px;
+        font-weight: bold;
+        color: #c80cc2;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+    
+    .close-btn:hover {
+        color: #a00899;
+    }
+    
+    .modal-details {
+        margin: 15px 0;
+    }
+    
+    .modal-details p {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
+    
+    .modal-details strong {
+        color: #c80cc2;
+    }
+    
+    .modal-img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        border-radius: 8px;
+        margin: 15px 0;
+    }
+</style>
+
+<body>
+    <nav class="logo">
+        <img src="./logo.png" height="58px" width="60px" alt="controls">
+
+        <h2>
+            <marquee behavior="center" direction="right to left">P.V BOX OFFICE 🎥🎥</marquee>
+        </h2>
+        <br>
+
+        <div id="box5">
+            <img src="./profile.png" height="63px" width="60px">
+        </div>
+    </nav>
+
+    <nav class="nav2">
+        <h3>
+            <div class="box1">Home🏡</div>
+        </h3>
+        <h3>
+            <div class="box2">About🆎</div>
+        </h3>
+        <h3>
+            <div class="box3">Menu🛬</div>
+        </h3>
+        <h3>
+            <div class="box4 language-dropdown">
+                <div id="languageBtn" onclick="toggleLanguageMenu()">Language📞</div>
+                <div id="languageMenu" class="language-menu">
+                    <button class="language-btn" onclick="selectLanguage('telugu')">Telugu</button>
+                    <button class="language-btn" onclick="selectLanguage('english')">English</button>
+                    <button class="language-btn" onclick="selectLanguage('hindi')">Hindi</button>
+                    <button class="language-btn" onclick="selectLanguage('kannada')">Kannada</button>
+                    <button class="language-btn" onclick="selectLanguage('malayalam')">Malayalam</button>
+                    <button class="language-btn" onclick="selectLanguage('tamil')">Tamil</button>
+                    <button class="language-btn" onclick="selectLanguage('All')">All</button>
+                </div>
+            </div>
+        </h3>
+
+
+    </nav>
+
+    <nav class="nav3">
+        <div class="icon1">Telugu</div>
+
+        <section class="T-posters">
+
+            <div>
+                <img src="./adipurush.png" height="70px" width="70px" alt="Adipurush" class="movie-img" onclick="showMovieDetails('adipurush')">
+
+                <img src="./devara.png" height="70px" width="70px" alt="Devara" class="movie-img" onclick="showMovieDetails('devara')">
+
+                <img src="./varanasi.png" height="70px" width="70px" alt="Varanasi" class="movie-img" onclick="showMovieDetails('varanasi')">
+
+                <img src="./spirit.png" height="70px" width="70px" alt="Spirit" class="movie-img" onclick="showMovieDetails('spirit')">
+            </div>
+        </section>
+
+        <div class="icon2">English</div>
+
+
+        <section class="E-posters">
+            <div>
+                <img src="./monster.png" height="70px" width="70px" alt="moster" class="movie-img" onclick="showMovieDetails('monster')">
+
+                <img src="./spiderman.png" height="70px" width="70px" alt="spiderman" class="movie-img" onclick="showMovieDetails('spiderman')">
+
+                <img src="./titanic.png" height="70px" width="70px" alt="titanic" class="movie-img" onclick="showMovieDetails('titanic')">
+
+                <img src="./life of pi.png" height="70px" width="70px" alt="life of pi" class="movie-img" onclick="showMovieDetails('life of pi')">
+            </div>
+        </section>
+
+        <div class="icon3">Hindi</div>
+
+        <section class="H-posters">
+            <div>
+                <img src="./dangalhindi.png" height="70px" width="70px" alt="controls">
+
+                <img src="./padmavati.png" height="70px" width="70px" alt="controls">
+
+                <img src="./tiger3.png" height="70px" width="70px" alt="controls">
+
+                <img src="./pathanhindi.png" height="70px" width="70px" alt="controls">
+            </div>
+        </section>
+
+
+        <div class="icon4">Kannada</div>
+
+        <section class="K-posters">
+            <div>
+                <img src="./kannada1.png" height="70px" width="70px" alt="controls">
+
+                <img src=".//kannada2.png" height="70px" width="70px" alt="controls">
+
+                <img src="./kannada3.png" height="70px" width="70px" alt="controls">
+
+                <img src="./kannada4.png" height="70px" width="70px" alt="controls">
+            </div>
+        </section>
+
+        <div class="icon5">Malayalam</div>
+
+        <section class="M-posters">
+            <div>
+                <img src="./malayalam1.png" height="70px" width="70px" alt="controls">
+
+                <img src="./malayalam2.png" height="70px" width="70px" alt="controls">
+
+                <img src="./malayalam3.png" height="70px" width="70px" alt="controls">
+
+                <img src="./malayalam4.png" height="70px" width="70px" alt="controls">
+            </div>
+        </section>
+
+        <div class="icon6">Tamil</div>
+
+        <section class="TA-posters">
+            <div>
+                <img src="./tamil1.png" height="70px" width="70px" alt="controls">
+
+                <img src="./tamil2.png" height="70px" width="70px" alt="controls">
+
+                <img src="./tamil3.png" height="70px" width="70px" alt="controls">
+
+                <img src="./tamil4.png" height="70px" width="70px" alt="controls">
+            </div>
+        </section>
+    </nav>
+
+    <!-- Movie Details Modal -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="movieTitle">Movie Title</h2>
+                <button class="close-btn" onclick="closeMovieDetails()">&times;</button>
+            </div>
+            <div class="modal-details">
+                <img id="movieImage" src="" alt="Movie" class="modal-img">
+                <p><strong>Genre:</strong> <span id="movieGenre"></span></p>
+                <p><strong>Release Year:</strong> <span id="movieYear"></span></p>
+                <p><strong>Director:</strong> <span id="movieDirector"></span></p>
+                <p><strong>Cast:</strong> <span id="movieCast"></span></p>
+                <p><strong>Description:</strong> <span id="movieDescription"></span></p>
+                <p><strong>Rating:</strong> <span id="movieRating"></span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Movie database
+        const movies = {
+            adipurush: {
+                title: 'Adipurush',
+                image: './adipurush.png',
+                genre: 'Action, Drama, Fantasy',
+                year: '2023',
+                director: 'Om Raut',
+                cast: 'Prabhas, Kriti Sanon, Saif Ali Khan',
+                description: 'An epic retelling of the Ramayana. Adipurush is a highly stylized mythological action-adventure film.',
+                rating: '7.2/10'
+            },
+            devara: {
+                title: 'Devara',
+                image: './devara.png',
+                genre: 'Action, Drama',
+                year: '2024',
+                director: 'Kortala Siva',
+                cast: 'Jr. NTR, Janhvi Kapoor',
+                description: 'An action-packed Drama set against a backdrop of maritime adventure and intrigue.',
+                rating: '7.5/10'
+            },
+            varanasi: {
+                title: 'Varanasi',
+                image: './varanasi.png',
+                genre: 'Drama',
+                year: '2027',
+                director: 'S.S Rajamouli',
+                cast: 'MaheshBabu,PrudiviRaj',
+                description: 'A poignant drama exploring the spiritual and cultural essence of Varanasi.',
+                rating: '7.0/10'
+            },
+            spirit: {
+                title: 'Spirit',
+                image: './spirit.png',
+                genre: 'Action, Drama',
+                year: '2023',
+                director: 'Sandeep Reddy Vanga',
+                cast: 'Prabhas',
+                description: 'An action film with high-octane sequences and entertaining moments.',
+                rating: '9.0/10'
+            }
+        };
+
+        function showMovieDetails(movieId) {
+            const movie = movies[movieId];
+            if (movie) {
+                document.getElementById('movieTitle').textContent = movie.title;
+                document.getElementById('movieImage').src = movie.image;
+                document.getElementById('movieGenre').textContent = movie.genre;
+                document.getElementById('movieYear').textContent = movie.year;
+                document.getElementById('movieDirector').textContent = movie.director;
+                document.getElementById('movieCast').textContent = movie.cast;
+                document.getElementById('movieDescription').textContent = movie.description;
+                document.getElementById('movieRating').textContent = movie.rating;
+                document.getElementById('movieModal').classList.add('show');
+            }
+        }
+
+        function closeMovieDetails() {
+            document.getElementById('movieModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('movieModal');
+            if (event.target === modal) {
+                closeMovieDetails();
+            }
+        });
+
+        // Toggle language menu visibility
+        function toggleLanguageMenu() {
+            const menu = document.getElementById('languageMenu');
+            menu.classList.toggle('show');
+        }
+
+        // Select language and show corresponding section
+        function selectLanguage(language) {
+            console.log('Selected language: ' + language);
+
+            // Hide all language sections
+            document.querySelectorAll('.icon1, .icon2, .icon3, .icon4, .icon5, .icon6').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.T-posters, .E-posters, .H-posters, .K-posters, .M-posters, .TA-posters').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Show selected language section
+            switch (language) {
+                case 'telugu':
+                    document.querySelector('.icon1').style.display = 'block';
+                    document.querySelector('.T-posters').style.display = 'flex';
+                    break;
+                case 'english':
+                    document.querySelector('.icon2').style.display = 'block';
+                    document.querySelector('.E-posters').style.display = 'flex';
+                    break;
+                case 'hindi':
+                    document.querySelector('.icon3').style.display = 'block';
+                    document.querySelector('.H-posters').style.display = 'flex';
+                    break;
+                case 'kannada':
+                    document.querySelector('.icon4').style.display = 'block';
+                    document.querySelector('.K-posters').style.display = 'flex';
+                    break;
+                case 'malayalam':
+                    document.querySelector('.icon5').style.display = 'block';
+                    document.querySelector('.M-posters').style.display = 'flex';
+                    break;
+                case 'tamil':
+                    document.querySelector('.icon6').style.display = 'block';
+                    document.querySelector('.TA-posters').style.display = 'flex';
+                    break;
+            }
+
+            // Close menu after selection
+            document.getElementById('languageMenu').classList.remove('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.language-dropdown');
+            if (!dropdown.contains(event.target)) {
+                document.getElementById('languageMenu').classList.remove('show');
+            }
+        });
+
+        // Show Telugu by default on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            selectLanguage('telugu');
+        });
+    </script>
+
+</body>
+
+</html>
